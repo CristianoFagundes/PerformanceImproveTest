@@ -108,16 +108,7 @@ namespace PerformanceImproveTestProject
 
             protected override List<Dado> OnPerformQuery(List<int> keys)
             {
-
-                localDatabase.Where(x => keys.Exists(y => y == x.ID)).ToList();         //QueryLinqWhere
-                localDatabase.Where(x => keys.Contains(x.ID)).ToList();                 //QueryLinqContain
-                localDatabase.AsParallel().Where(x => keys.Contains(x.ID)).ToList();    //QueryLinqContainParallel
-                localDatabase.Join(keys, x => x.ID, y => y, (x, y) => x).ToList();      //QueryLinqJoin
-
-
                 return localDatabase.Where(x => keys.Exists(y => y==x.ID)).ToList();
-
-
             }
 
         }
